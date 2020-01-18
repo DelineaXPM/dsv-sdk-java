@@ -23,17 +23,42 @@ will succeed.
 
 ### Settings
 
-The API authenticates to DSV using a `client_id` and `client_secret`.
-The SDK application gets a secret from DSV by it's _path_.
+The API needs a `tenant` to create request URLs that refer to it.
 
 ```ini
 secrets_vault.tenant = mytenant
-secrets_vault.client_id = 359f8c9f-d555-40ff-a036-ce95432e708b
-secrets_vault.client_secret = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-secret.path = path/to/secret
 ```
 
+It authenticates to DSV using a `client_id` and `client_secret`.
+
+```ini
+secrets_vault.client_id = 359f8c9f-d555-40ff-a036-ce95432e708b
+secrets_vault.client_secret = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+The API assumes a the top-level domain (TLD) of _com_ but it can be overridden:
+
+```ini
+secrets_vault.tld = eu
+```
+
+The base URL template itself can also be explicitly set:
+
+```ini
+secrets_vault.base_url_template = https://%s.secretsvaultcloud.%s/v1
+```
+
+Note that the template must contain two _conversion specifiers_ for `.tenant` and
+`.base_url_tld` respectively.
+
 ## Run the jar
+
+The SDK example application gets a secret from DSV by it's `path`. The path can
+be set as a proper
+
+```ini
+secret.path = path/to/secret
+```
 
 After the SDK application settings are configured the jar can be built:
 

@@ -40,7 +40,8 @@ import org.springframework.web.util.UriBuilderFactory;
  */
 @Component
 public class SecretsVaultFactoryBean implements FactoryBean<SecretsVault>, InitializingBean {
-    public static final String DEFAULT_ROOT_URI_TEMPLATE = "https://%s.secretsvaultcloud.com/v1";
+    public static final String DEFAULT_BASE_URL_TEMPLATE = "https://%s.secretsvaultcloud.%s/v1",
+            DEFAULT_TLD = "com";
 
     static class AccessGrant {
         private String accessToken, refreshToken, tokenType;
@@ -75,8 +76,11 @@ public class SecretsVaultFactoryBean implements FactoryBean<SecretsVault>, Initi
 
     private static final String AUTHORIZATION_TOKEN_TYPE = "Bearer";
 
-    @Value("${secrets_vault.root_uri_template:" + DEFAULT_ROOT_URI_TEMPLATE + "}")
-    private String rootUriTemplate;
+    @Value("${secrets_vault.base_url_template:" + DEFAULT_BASE_URL_TEMPLATE + "}")
+    private String baseUrlTemplate;
+
+    @Value("${secrets_vault.tld:" + DEFAULT_TLD + "}")
+    private String tld;
 
     @Value("${secrets_vault.client_id}")
     private String clientId;
@@ -94,7 +98,10 @@ public class SecretsVaultFactoryBean implements FactoryBean<SecretsVault>, Initi
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        uriBuilderFactory = new DefaultUriBuilderFactory(fromUriString(String.format(rootUriTemplate, tenant)));
+        tld = tld.replaceAll("^\\.*(.*?)\\.*$", "$1"); // .com. -> com
+        baseUrlTemplate = baseUrlTemplate.replaceAll("/*$", ""); // .../ -> ...
+        uriBuilderFactory = new DefaultUriBuilderFactory(
+                fromUriString(String.format(baseUrlTemplate, tenant, tld)));
         if (requestFactory == null)
             requestFactory = new SimpleClientHttpRequestFactory();
     }
@@ -108,7 +115,7 @@ public class SecretsVaultFactoryBean implements FactoryBean<SecretsVault>, Initi
         request.put(GRANT_REQUEST_CLIENT_ID_PROPERTY, clientId);
         request.put(GRANT_REQUEST_CLIENT_SECRET_PROPERTY, clientSecret);
 
-        return new RestTemplate().postForObject(String.format(rootUriTemplate, tenant) + "/token",
+        return new RestTemplate().postForObject(String.format(baseUrlTemplate, tenant, tld) + "/token",
                 new HttpEntity<Map<String, Object>>(request, headers), AccessGrant.class);
     }
 
