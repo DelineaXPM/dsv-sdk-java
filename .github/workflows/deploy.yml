@@ -1,0 +1,40 @@
+name: Deploy
+on:
+  push:
+    # Publish `master`
+    branches:
+      - master
+
+    # Publish `v1.2.3` tags as releases.
+    tags:
+      - v*
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Customize the Maven settings.xml
+        uses: whelk-io/maven-settings-xml-action@v4
+        with:
+          servers: '[{ "id": "sonatype-nexus-snapshots", "username": "${{ secrets.SONATYPE_USERNAME }}", "password": "${{ secrets.SONATYPE_PASSWORD }}" }, { "id": "sonatype-nexus-staging", "username": "${{ secrets.SONATYPE_USERNAME }}", "password": "${{ secrets.SONATYPE_PASSWORD }}" }]'
+
+      - name: Configure the application
+        run: |
+          properties="src/main/resources/application.properties"
+          rm -f "${properties}"
+          echo "secrets_vault.tenant = ${{ secrets.DSV_TENANT }}" >> "${properties}"
+          echo "secrets_vault.client_id = ${{ secrets.DSV_CLIENT_ID }}" >> "${properties}"
+          echo "secrets_vault.client_secret = ${{ secrets.DSV_CLIENT_SECRET }}" >> "${properties}"
+
+      - name: Deploy with Maven
+        run: |
+          mvn -P github -B -C -ff -ntp -U deploy -Dregistry=https://maven.pkg.github.com/thycotic -Dtoken=GH_TOKEN
