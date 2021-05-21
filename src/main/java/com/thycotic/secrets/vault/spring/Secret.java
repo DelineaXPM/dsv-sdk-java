@@ -1,18 +1,17 @@
 package com.thycotic.secrets.vault.spring;
 
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 
 /**
  * Java representation of a <i>Secret</i> retrieved from DevOps Secrets Vault.
  */
 public class Secret extends ResourceMetadata {
-    private final List<String> attributes = Collections.emptyList();
+    private final Map<String, String> attributes = Collections.emptyMap();
     private final Map<String, String> data = Collections.emptyMap();
     private String path;
 
-    public List<String> getAttributes() {
+    public Map<String, String> getAttributes() {
         return attributes;
     }
 
