@@ -1,5 +1,7 @@
 # The Thycotic Secrets Java SDK
 
+![Deploy](https://github.com/thycotic/dsv-sdk-java/workflows/Deploy/badge.svg)
+
 The [Thycotic](https://thycotic.com/)
 [DevOps Secrets Vault](https://thycotic.com/products/devops-secrets-vault-password-management/)
 (DSV) Java SDK contains classes that interact with the DSV via the REST API.

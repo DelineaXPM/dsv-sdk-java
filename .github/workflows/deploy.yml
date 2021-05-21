@@ -34,6 +34,7 @@ jobs:
           echo "secrets_vault.tenant = ${{ secrets.DSV_TENANT }}" >> "${properties}"
           echo "secrets_vault.client_id = ${{ secrets.DSV_CLIENT_ID }}" >> "${properties}"
           echo "secrets_vault.client_secret = ${{ secrets.DSV_CLIENT_SECRET }}" >> "${properties}"
+          echo "secret.path = /test/sdk/simple" >> "${properties}"
 
       - name: Deploy with Maven
         run: |
