@@ -1,13 +1,8 @@
 name: Deploy
 on:
   push:
-    # Publish `master`
-    branches:
-      - master
-
-    # Publish `v1.2.3` tags as releases.
     tags:
-      - v*
+      - 'v*'
 
 jobs:
   push:
