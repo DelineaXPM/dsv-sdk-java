@@ -1,5 +1,5 @@
 /**
- * A Thycotic DevOps Secrets Vault API based on
+ * A Delinea DevOps Secrets Vault API based on
  * <a href="https://spring.io/">Spring.</a>
  *
  * <p>{@link SecretsVault} extends
