@@ -1,9 +1,9 @@
 # The Delinea Secrets Java SDK
 
-![Deploy](https://github.com/delinea/dsv-sdk-java/workflows/Deploy/badge.svg)
+![Deploy](https://github.com/thycotic/dsv-sdk-java/workflows/Deploy/badge.svg)
 
 The [Delinea](https://delinea.com/)
-[DevOps Secrets Vault](https://delinea.com/products/devops-secrets-vault-password-management/)
+[DevOps Secrets Vault](https://delinea.com/products/devops-secrets-management-vault)
 (DSV) Java SDK contains classes that interact with the DSV via the REST API.
 
 The SDK contains an API based the [Spring Framework](https://spring.io/projects/spring-framework)
