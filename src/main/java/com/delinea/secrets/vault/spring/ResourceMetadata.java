@@ -1,4 +1,4 @@
-package com.thycotic.secrets.vault.spring;
+package com.delinea.secrets.vault.spring;
 
 import java.util.Date;
 import java.util.UUID;

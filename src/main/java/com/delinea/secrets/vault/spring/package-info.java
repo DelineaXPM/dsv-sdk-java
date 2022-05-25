@@ -10,4 +10,4 @@
  * @author Adam Migus
  * @see SecretsVaultFactoryBean
  */
-package com.thycotic.secrets.vault.spring;
+package com.delinea.secrets.vault.spring;

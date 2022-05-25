@@ -1,6 +1,6 @@
 # The Delinea Secrets Java SDK
 
-![Deploy](https://github.com/thycotic/dsv-sdk-java/workflows/Deploy/badge.svg)
+![Deploy](https://github.com/DelineaXPM/dsv-sdk-java/workflows/Deploy/badge.svg)
 
 The [Delinea](https://delinea.com/)
 [DevOps Secrets Vault](https://delinea.com/products/devops-secrets-management-vault)
@@ -18,7 +18,7 @@ You can use this SDk in your application by adding the following dependency:
 
 ```xml
 <dependency>
-  <groupId>com.thycotic.secrets</groupId>
+  <groupId>com.delinea.secrets</groupId>
   <artifactId>dsv-sdk-java</artifactId>
   <version>1.0</version>
 </dependency>
