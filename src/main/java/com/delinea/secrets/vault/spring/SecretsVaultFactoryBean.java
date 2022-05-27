@@ -1,4 +1,4 @@
-package com.thycotic.secrets.vault.spring;
+package com.delinea.secrets.vault.spring;
 
 import static org.springframework.web.util.UriComponentsBuilder.fromUriString;
 
