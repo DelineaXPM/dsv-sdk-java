@@ -1,12 +1,37 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "DelineaXPM/renovate-config"
+    "config:base",
+    ":dependencyDashboard",
+    ":semanticPrefixFixDepsChoreOthers",
+    ":ignoreModulesAndTests",
+    "replacements:all",
+    "workarounds:all",
+    ":semanticCommitTypeAll(chore)",
+    "github>whitesource/merge-confidence:beta",
+    "github>aquaproj/aqua-renovate-config#1.2.6",
+    "helpers:pinGitHubActionDigests",
+    "regexManagers:githubActionsVersions",
+    "regexManagers:dockerfileVersions",
+    ":enableVulnerabilityAlerts",
+    "group:linters",
+    "schedule:weekdays"
   ],
-  "enabled": false,
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["*"],
+      "enabled": false
+    }
+  ],
+  "osvVulnerabilityAlerts": true,
   "vulnerabilityAlerts": {
     "enabled": true,
-    "semanticCommitType": "security",
-    "prCreation": "immediate"
-  }
+    "prCreation": "immediate",
+    "labels": ["security"],
+    "minimumReleaseAge": null,
+    "dependencyDashboardApproval": false,
+    "schedule": []
+  },
+  "recreateClosed": true,
+  "dependencyDashboardAutoclose": true
 }
