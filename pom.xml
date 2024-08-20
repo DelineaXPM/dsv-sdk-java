@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.12</version>
+		<version>3.2.3</version>
 		<relativePath/>
 		<!-- lookup parent from repository -->
 	</parent>
@@ -52,7 +52,7 @@
 	<properties>
 		<java.version>8</java.version>
 		<jackson.version>2.15.0</jackson.version>
-		<spring.version>6.0.19</spring.version>
+		<spring.version>6.0.23</spring.version>
 		<pmd.version>6.55.0</pmd.version>
 	</properties>
 
@@ -92,11 +92,13 @@
 			<version>${jackson.version}</version>
 		</dependency>
 
+<!-- 
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.30</version>
 		</dependency>
+ -->
 
 		<dependency>
 			<groupId>com.squareup.okhttp3</groupId>
