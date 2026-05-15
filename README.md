@@ -18,9 +18,9 @@ You can use this SDk in your application by adding the following dependency:
 
 ```xml
 <dependency>
-  <groupId>com.delinea.secrets</groupId>
+  <groupId>com.thycotic.secrets</groupId>
   <artifactId>dsv-sdk-java</artifactId>
-  <version>1.0</version>
+  <version>1.0.1</version>
 </dependency>
 ```
 
