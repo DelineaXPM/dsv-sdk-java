@@ -62,7 +62,7 @@ public class SecretsVaultFactoryBean implements FactoryBean<SecretsVault>, Initi
         public String getTokenType() {
             return tokenType;
         }
-    };
+    }
 
     private static final String GRANT_REQUEST_CLIENT_ID_PROPERTY = "client_id";
 

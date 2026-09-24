@@ -1,0 +1,5 @@
+kind: 🔒 Security
+body: Spring Boot 3.2.3 → 3.5.16 (Spring 6.2.19), Jackson 2.21.7, Logback 1.5.38; clears both Snyk CRITICALs. Java baseline raised to 17, as Spring Boot 3 requires.
+time: 2026-09-24T10:20:00.000000-07:00
+custom:
+  github-contributor: pacificcode
