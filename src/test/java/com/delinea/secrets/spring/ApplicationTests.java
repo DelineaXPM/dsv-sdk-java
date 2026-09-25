@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.ClientHttpRequestFactory;
-import org.springframework.http.client.OkHttp3ClientHttpRequestFactory;
+import org.springframework.http.client.JdkClientHttpRequestFactory;
 
 @SpringBootTest
 class ApplicationTests {
@@ -15,7 +15,7 @@ class ApplicationTests {
     public static class Config {
         @Bean
         public ClientHttpRequestFactory clientRequestFactory() {
-            return new OkHttp3ClientHttpRequestFactory();
+            return new JdkClientHttpRequestFactory();
         }
     }
 
